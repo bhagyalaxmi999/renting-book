@@ -17,7 +17,7 @@ const rentSchema = new mongoose.Schema({
     },
     rentDate:{
         type:Date,
-        default:Date.now()
+        default: new Date().toLocaleString()
     },
     returnDate: {
         type: Date,

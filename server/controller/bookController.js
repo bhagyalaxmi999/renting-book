@@ -6,7 +6,7 @@ const bookCtrl={
         try{
             // res.json({msg: 'get all called'})
              const data = await Book.find({})
-             return res.status(200).json({ length: data, books: data})
+            return res.status(200).json({ length: data.length, books: data})
         } catch (err) {
             return res.status(500).json({ msg: err.message})
         }
