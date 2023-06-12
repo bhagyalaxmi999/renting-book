@@ -11,10 +11,14 @@ import "bootstrap-icons/font/bootstrap-icons.css"
 
 import "react-toastify/dist/ReactToastify.css"
 
+import DataProvider from './GlobalContext';
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App />
+        <DataProvider>
+         <App />
+        </DataProvider>
   </React.StrictMode>
 );
 
