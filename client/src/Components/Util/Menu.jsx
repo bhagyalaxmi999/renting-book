@@ -38,20 +38,43 @@ function Menu(props) {
             {
                 isLogged ?  (
                     <div className="collapse navbar-collapse justify-content-end" id="menu">
-                        <ul className="navbar-nav">
-                            <li className="nav-item btn-group">
+                        <ul className="navbar-nav me-5">
+                            <li className="nav-item dropdown">
                                <NavLink className="nav-link dropdown-toggle" data-bs-toggle="dropdown">
                                     Account
                                </NavLink>
-                                <ul className="dropdown-menu text-center">
-                                    <li>
+                                <ul className="dropdown-menu">
+                                    
                                         {
-                                            isUser ? <NavLink to={`/user/dashboard`} className="dropdown-item">Dashboard</NavLink>: null
+                                            isUser ? (
+                                                <React.Fragment>
+                                                    <li>
+                                                    <NavLink to={`/user/dashboard`} className="dropdown-item">Dashboard</NavLink> </li>
+                                                </React.Fragment>
+                                            ): null
                                         }
-                                        {
-                                            isAdmin ? <NavLink to={`/admin/dashboard`} className="dropdown-item">Dashboard</NavLink>: null
-                                        }
-                                    </li>
+                                    
+                                     {
+                                            isAdmin ? (
+                                                <React.Fragment>
+                                                      <li>
+                                            <NavLink to={`/admin/dashboard`} className="dropdown-item">Dashboard</NavLink> 
+                                                    </li>
+                                                      <li>
+                                            <NavLink to={`/admin/books/list`} className="dropdown-item">Books</NavLink> 
+                                                    </li>
+                                                      <li>
+                                            <NavLink to={`/admin/category/list`} className="dropdown-item">Category</NavLink> 
+                                                    </li>
+                                                      <li>
+                                            <NavLink to={`/admin/rented/list`} className="dropdown-item">Rent</NavLink> 
+                                                    </li>
+                                                      <li>
+                                            <NavLink to={`/admin/customers/list`} className="dropdown-item">Customer</NavLink> 
+                                                    </li>
+                                                </React.Fragment>
+                                            ) : null
+                                     }
                                     <li>
                                         <NavLink to={`/`} onClick={logoutHandler} className="dropdown-item btn btn-danger">Logout</NavLink>
                                     </li>

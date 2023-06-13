@@ -3,6 +3,7 @@ import { BrowserRouter, Route, NavLink, Routes } from 'react-router-dom'
 import { ToastContainer } from 'react-toastify'
 import { GlobalContext } from './GlobalContext'
 
+
 import Menu from './Components/Util/Menu'
 import Home from './Components/Default/Home'
 import Contact from './Components/Default/Contact'
@@ -12,6 +13,12 @@ import UserDashboard from './Components/User/UserDashboard'
 import AdminDashboard from './Components/Admin/AdminDashboard'
 import Pnf from './Components/Util/Pnf'
 import ProtectedRoute from './AuthGaurd/ProtectedRoute'
+import Header from './Components/Util/Header'
+import Footer from './Components/Util/Footer'
+import Books from './Components/Admin/screens/Books'
+import Categories from './Components/Admin/screens/Categories'
+import Rent from './Components/Admin/screens/Rent'
+import Customer from './Components/Admin/screens/Customer'
 
 function App() {
   const context = useContext(GlobalContext)
@@ -21,7 +28,9 @@ function App() {
 
   return (
     <BrowserRouter>
+          <Header/>
           <Menu/>
+
           <ToastContainer position={'top-center'} autoClose={4000} />
           <Routes>
               <Route path={`/`} element={<Home/>} />
@@ -39,12 +48,18 @@ function App() {
                     isLogged && isAdmin ? (
                         <Route element={<ProtectedRoute/>}>
                               <Route path={`/admin/dashboard`} element={<AdminDashboard/>} />
+                              <Route path={`/admin/books/list`} element={<Books/>} />
+                              <Route path={`/admin/category/list`} element={<Categories/>} />
+                              <Route path={`/admin/rented/list`} element={<Rent/>} />
+                              <Route path={`/admin/customers/list`} element={<Customer/>} />
                         </Route>
                     ): null 
                 }
-              
+                   
               <Route path={`/*`} element={<Pnf/>} />
           </Routes>
+          
+          <Footer/>
     </BrowserRouter>
   )
 }
