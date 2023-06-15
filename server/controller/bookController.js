@@ -22,6 +22,7 @@ const bookCtrl={
             return res.status(500).json({ msg: err.message})
         }
     },
+
     create: async (req, res) => {
         try{
             // res.json({msg: ' create called'})
@@ -32,11 +33,12 @@ const bookCtrl={
                if(extBook)
                   return res.status(400).json({ msg: `ISBN code already allocated..`})
             let newItem = await Book.create(req.body)
-             return res.status(200).json({ msg: "New Book added successfully", book:newItem})         
+             return res.status(200).json({ msg: "New Book added successfully", book: newItem})         
         } catch (err) {
             return res.status(500).json({ msg: err.message})
         }
     },
+
     update: async (req, res) => {
         try{
             // res.json({msg: ' update called'})
@@ -54,6 +56,7 @@ const bookCtrl={
             return res.status(500).json({ msg: err.message})
         }
     },
+
     delete: async (req, res) => {
         try{
             // res.json({msg: ' delete called'})
