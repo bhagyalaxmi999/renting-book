@@ -19,7 +19,7 @@ function AddBook() {
         pages: 0,
         rentCost: 0,
         numberOfCopy: 1,
-        isbn: '0'
+        isbn: ''
     })
     const readValue = async (e) => {
             const { name, value } = e.target

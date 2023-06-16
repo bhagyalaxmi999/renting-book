@@ -23,6 +23,9 @@ import BookDetails from './Components/Admin/screens/book/BookDetails.jsx'
 import AddBook from './Components/Admin/screens/book/AddBook'
 import AddCategory from './Components/Admin/screens/category/AddCategory'
 import UpdateCategory from './Components/Admin/screens/category/UpdateCategory'
+import NewRent from './Components/Admin/screens/rent/NewRent'
+import RentDetails from './Components/Admin/screens/rent/RentDetails'
+import UpdateRent from './Components/Admin/screens/rent/UpdateRent'
 
 function App() {
   const context = useContext(GlobalContext)
@@ -59,6 +62,9 @@ function App() {
                               <Route path={`/admin/category/add`} element={<AddCategory/>} />
                               <Route path={`/admin/category/edit/:id`} element={<UpdateCategory/>} />
                               <Route path={`/admin/rented/list`} element={<Rent/>} />
+                              <Route path={`/admin/rented/new`} element={<NewRent/>} />
+                              <Route path={`/admin/rented/detail/:id`} element={<RentDetails/>} />
+                              <Route path={`/admin/rented/edit/:id`} element={<UpdateRent/>} />
                               <Route path={`/admin/customers/list`} element={<Customer/>} />
                         </Route>
                     ): null 
