@@ -22,6 +22,21 @@ useEffect(() => {
     readrentList()
 }, [])
 
+// delete rent details
+const deleteHandler = async (id,bookId) => {
+    if(window.confirm(`Do you want to delete rent details?`)) {
+         const res = await axios.delete(`/api/rent/delete/${id}/book/${bookId}`, {
+            headers: { Authorization: token }
+         })
+         toast.success(res.data.msg)
+         window.location.reload()
+    } else {
+        toast.warning(`Delete Terminated`)
+    }
+}
+
+
+
 
   return (
     <div className='container-fluid'>
@@ -54,7 +69,7 @@ useEffect(() => {
                       <tbody>
                           {
                               rent && rent.map((item,index) => {
-                                  const { _id, user, book, amount, rentDate, returnDate, paymentStatus } = item
+                                  const { _id, bookId, userId, user, book, amount, rentDate, returnDate, paymentStatus } = item
 
                                   return (
                                     <tr className="text-center" key={index}>
@@ -64,13 +79,14 @@ useEffect(() => {
                                         </td>
                                         <td> { user.name } </td>
                                         <td> &#8377; { amount } </td>
-                                        <td> { new Date(rentDate).toLocaleString() } </td>
+                                        {/* <td> { new Date(rentDate).toLocaleString() } </td> */}
+                                      <td>{rentDate}</td>
                                         <td> { new Date(returnDate).toLocaleString() } </td>
                                         <td> { paymentStatus } </td>
                                         <td>
                                             <NavLink to={`/admin/rented/detail/${_id}`} className="btn btn-link">Details</NavLink>
-                                            <NavLink to={`/admin/rented/edit/${_id}`} className="btn btn-link">Edit</NavLink>
-                                            <button className="btn btn-link">Delete</button>
+                                            <NavLink to={`/admin/rented/edit/${_id}`} className="btn btn-link">Return</NavLink>
+                                            <button onClick={() => deleteHandler(_id,bookId)} className="btn btn-link">Delete</button>
                                         </td>
                                     </tr>
                                   )
@@ -85,3 +101,84 @@ useEffect(() => {
 }
 
 export default Rent
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

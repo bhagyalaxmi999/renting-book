@@ -1,4 +1,4 @@
-import React, {  useCallback,useContext, useEffect, useState } from 'react'
+import React, { useCallback, useContext, useEffect, useState } from 'react'
 import axios from 'axios'
 import { toast } from 'react-toastify'
 import { useNavigate, useParams } from 'react-router-dom'
@@ -22,6 +22,7 @@ function UpdateBook() {
         numberOfCopy: 1,
         isbn: ''
     })
+
     const readValue = async (e) => {
             const { name, value } = e.target
             setBook({...book, [name]: value })
@@ -42,17 +43,17 @@ function UpdateBook() {
     },[])
 
     // to read single book details
-   const getSingleBook = useCallback(() => {
-    const readSingle = async () => {
-        const res = await axios.get(`/api/book/single/${params.id}`,{
-          headers: {
-            Authorization: token
-          }
-        })
-        setBook(res.data.book)
-    }
-    readSingle()
-   })
+    const getSingleBook = useCallback(() => {
+        const readSingle = async () => {
+            const res = await axios.get(`/api/book/single/${params.id}`, {
+              headers: {
+                Authorization: token
+              }
+            })
+            setBook(res.data.book)
+        }
+        readSingle()
+    },[])
 
     useEffect(() => {
         getCategory()
@@ -63,7 +64,7 @@ function UpdateBook() {
         e.preventDefault()
         try {
             // console.log('new book =', book)
-            await axios.post(`/api/book/update/${params.id}`, book, {
+            await axios.patch(`/api/book/update/${params.id}`, book, {
                 headers: {
                     Authorization: token
                 }
@@ -81,7 +82,7 @@ function UpdateBook() {
     <div className="container">
         <div className="row">
             <div className="col-md-12 text-center">
-                <h3 className="display-3 text-success">update new book</h3>
+                <h3 className="display-3 text-success">Update book</h3>
             </div>
         </div>
 
@@ -150,3 +151,42 @@ function UpdateBook() {
 }
 
 export default UpdateBook
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

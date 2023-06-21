@@ -68,6 +68,10 @@ function BookDetails() {
                                 <span className="float-end text-success"> { book.numberOfCopy } </span>
                             </li>
                             <li className="list-group-item">
+                                <strong>Rented Copies</strong>
+                                <span className="float-end text-success"> { book.rentedCopies } </span>
+                            </li>
+                            <li className="list-group-item">
                                 <strong>ISBN</strong>
                                 <span className="float-end text-success"> { book.isbn } </span>
                             </li>
@@ -92,3 +96,45 @@ function BookDetails() {
 }
 
 export default BookDetails
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

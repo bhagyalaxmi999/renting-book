@@ -8,6 +8,6 @@ rentRoute.get(`/single/:id`,authMiddleware, rentController.getSingle)
 
 rentRoute.post(`/create`,authMiddleware,adminAuth, rentController.create)
 rentRoute.patch(`/update/:id`,authMiddleware,adminAuth, rentController.update)
-rentRoute.delete(`/delete/:id`,authMiddleware,adminAuth, rentController.delete)
+rentRoute.delete(`/delete/:id/book/:bookId`,authMiddleware,adminAuth, rentController.delete)
 
 module.exports = rentRoute

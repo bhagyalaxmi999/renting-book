@@ -38,6 +38,11 @@ const rentController = {
                         if(!user)
                             return res.status(404).json({ msg: `User details not found`})
 
+                    // update the number of copy and rented copies
+                    if(book.numberOfCopy === 0) {
+                            return res.status(400).json({ msg: "No More copies available for rent."})
+                    } 
+
                     let newRent = {
                             ...req.body,
                             book,
@@ -75,12 +80,21 @@ const rentController = {
     },
     delete: async (req,res) => {
         try {
-            let id = req.params.id 
+            let id = req.params.id
+            let bookId = req.params.bookId
             
            let extRent = await Rent.findById({ _id: id })
                 if(!extRent) 
                     return res.status(404).json({ msg: `Requested Rent id not found`})
-            
+
+            let book = await Book.findById({_id: bookId })
+               if(book) {
+                    let rCopies = book.rentedCopies - 1
+                    let nCopy = book.numberOfCopy + 1
+
+                    await Book.findByIdAndUpdate({_id: bookId }, { rentedCopies: rCopies, numberOfCopy : nCopy })
+               }
+
                 await Rent.findByIdAndDelete({ _id: id })
                     return res.status(200).json({ msg: `Rent details deleted Successfully.`})
         } catch (err) {
@@ -90,3 +104,37 @@ const rentController = {
 }
 
 module.exports = rentController
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
