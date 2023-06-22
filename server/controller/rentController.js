@@ -11,6 +11,18 @@ const rentController = {
             return res.status(500).json({ msg: err.message })
         }
     },
+    getByUser: async (req, res) =>{ 
+        try {
+            let userId = req.params.userId
+
+            const data = await Rent.find({})
+
+            let userRent = data.filter((item) => item.userId == userId )
+             res.status(200).json({length: userRent.length, rents: userRent})
+        } catch (err) {
+            return res.status(500).json({msg: err.message})
+        }
+    },
     getSingle: async (req,res) => {
         try {
             let id = req.params.id 
