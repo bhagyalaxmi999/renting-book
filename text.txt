@@ -1,0 +1,13 @@
+admin
+
+admin password
+email:
+chbhagya937@gmail.com
+password:
+js786
+
+user
+email:
+yesu@gmail.com
+password:
+yesu

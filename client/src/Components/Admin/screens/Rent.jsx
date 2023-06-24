@@ -58,7 +58,7 @@ const deleteHandler = async (id,bookId) => {
                           <tr className='text-center'>
                             <th>Book Title</th>
                             <th>Book Image</th>
-                            <th>User Name</th>
+                            <th>UserName</th>
                             <th>Amount</th>
                             <th>Rented Date</th>
                             <th>Return Date</th>
@@ -79,8 +79,8 @@ const deleteHandler = async (id,bookId) => {
                                         </td>
                                         <td> { user.name } </td>
                                         <td> &#8377; { amount } </td>
-                                        {/* <td> { new Date(rentDate).toLocaleString() } </td> */}
-                                      <td>{rentDate}</td>
+                                        <td> { new Date(rentDate).toLocaleString() } </td>
+                                      {/* <td>{rentDate}</td> */}
                                         <td> { new Date(returnDate).toLocaleString() } </td>
                                         <td> { paymentStatus } </td>
                                         <td>
@@ -101,84 +101,3 @@ const deleteHandler = async (id,bookId) => {
 }
 
 export default Rent
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

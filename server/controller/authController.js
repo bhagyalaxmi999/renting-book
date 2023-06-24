@@ -101,7 +101,7 @@ const authController = {
                         if(err)
                         return res.status(400).json({ msg: `Invalid Token..Un Authorized..`})
 
-                        // res.json({ user })
+                        // res.json({ user }) 
 
                          const rToken = createLoginToken({ id : user.id })
 
